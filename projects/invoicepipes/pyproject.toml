@@ -17,6 +17,7 @@ dependencies = [
     "python-dotenv>=1.0.0",
     "quantalogic-py-zerox<=0.0.8",
     "pydantic>=2.5.0",
+    "python-magic>=0.4.27",
 ]
 
 [project.optional-dependencies]
