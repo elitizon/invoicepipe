@@ -29,6 +29,11 @@ For detailed setup and usage instructions, see:
 - [Setting Up a FastAPI Project with Modern Python Tooling](docs/setup-fastapi-project.md)
 - [Managing Environment Variables and Configuration](docs/managing-env-files.md)
 
+## Getting Started with Development
+
+If you're new to this project or want to build a simple CLI tool first, check out:
+- [Step-by-Step Assignment: Building a Simple Invoice CLI Tool](docs/preparation-work/step-by-step-assignment.md)
+
 ---
 
 For more information on supported models, file types, and advanced options, refer to the [QuantaLogic PyZerox documentation](https://github.com/quantalogic/quantalogic-pyzerox).

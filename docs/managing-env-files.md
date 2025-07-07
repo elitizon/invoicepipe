@@ -937,6 +937,10 @@ services:
 - [Setting Up a FastAPI Project](setup-fastapi-project.md)
 - [Using QuantaLogic PyZerox](using-quantalogic-pyzerox.md)
 
+## Learning Path
+
+- [Step-by-Step Assignment: Building a Simple Invoice CLI Tool](preparation-work/step-by-step-assignment.md) - Practice environment variable management with a simple CLI project
+
 ## 12. Additional Resources
 
 - [python-dotenv Documentation](https://github.com/theskumar/python-dotenv)

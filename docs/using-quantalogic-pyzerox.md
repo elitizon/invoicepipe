@@ -121,4 +121,8 @@ See the [official documentation](https://github.com/quantalogic/quantalogic-pyze
 - [Setting Up a FastAPI Project with Modern Python Tooling](setup-fastapi-project.md)
 - [Managing Environment Variables and Configuration](managing-env-files.md)
 
+## Learning Path
+
+- [Step-by-Step Assignment: Building a Simple Invoice CLI Tool](preparation-work/step-by-step-assignment.md) - Start here if you're new to the project
+
 For more details, see the [QuantaLogic PyZerox documentation](https://github.com/quantalogic/quantalogic-pyzerox).

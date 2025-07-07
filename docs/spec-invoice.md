@@ -773,4 +773,8 @@ The project follows modern Python best practices with UV for dependency manageme
 - [Setting Up a FastAPI Project with Modern Python Tooling](setup-fastapi-project.md)
 - [Managing Environment Variables and Configuration](managing-env-files.md)
 
+## Learning Path
+
+- [Step-by-Step Assignment: Building a Simple Invoice CLI Tool](preparation-work/step-by-step-assignment.md) - Perfect for getting started with a simpler version
+
 *This specification document serves as the foundation for the InvoicePipe project development. It should be updated as the project evolves and new requirements emerge.*

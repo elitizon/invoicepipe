@@ -726,6 +726,10 @@ docker run -p 8000:8000 my-fastapi-project
 - [Using QuantaLogic PyZerox](using-quantalogic-pyzerox.md) - Document processing guide
 - [Managing Environment Variables and Configuration](managing-env-files.md) - Environment setup guide
 
+## Learning Path
+
+- [Step-by-Step Assignment: Building a Simple Invoice CLI Tool](preparation-work/step-by-step-assignment.md) - Build a simple CLI before tackling the full FastAPI project
+
 ## 13. Conclusion
 
 This setup provides a solid foundation for a modern FastAPI project with:
