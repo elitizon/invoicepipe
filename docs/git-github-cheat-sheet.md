@@ -1,5 +1,7 @@
 # Git & GitHub CLI Cheat Sheet
 
+> **Learn more:** For a deep dive into the original Git Flow model, see [A successful Git branching model by Vincent Driessen](https://nvie.com/posts/a-successful-git-branching-model/)
+
 ## 🚀 GitHub Flow Model - Quick Reference
 
 ```mermaid
