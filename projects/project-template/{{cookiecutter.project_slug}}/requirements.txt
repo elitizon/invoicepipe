@@ -1,0 +1,17 @@
+# {{cookiecutter.project_name}} - Requirements
+# This file is for users who prefer pip over uv
+# 
+# For modern development, we recommend using uv:
+# uv sync --extra dev --extra docs
+#
+# To install with pip:
+# pip install -r requirements.txt
+#
+# For development dependencies:
+# pip install -r requirements-dev.txt
+
+# Core dependencies
+google-adk>=1.0.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+types-requests>=2.31.0.20240106
