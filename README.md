@@ -36,6 +36,9 @@ Key features:
 - 🎯 **[Instructor Library Integration Guide](docs/instructor-integration-guide.md)** - Structured data extraction
 - 🌐 **[LiteLLM Integration Guide](docs/litellm-integration-guide.md)** - Universal LLM gateway and cost management
 
+### 🛠️ Development Tools
+- 🔧 **[Git & GitHub CLI Cheat Sheet](docs/git-github-cheat-sheet.md)** - GitHub Flow workflow and commands
+
 ### 📋 Prerequisites
 - Python 3.11
 - API key for a supported vision model (OpenAI, Gemini, Claude, etc.)
