@@ -2,6 +2,17 @@
 
 ## 🚀 GitHub Flow Model - Quick Reference
 
+```mermaid
+graph TD
+    A[Start: main branch] --> B[Create feature/fix branch]
+    B --> C[Work on changes]
+    C --> D[Push branch to remote]
+    D --> E[Open Pull Request]
+    E --> F[Code Review & Approvals]
+    F --> G[Squash & Merge to main]
+    G --> H[Delete branch]
+```
+
 This cheat sheet follows the **GitHub Flow** model with **squash and merge** strategy for clean commit history.
 
 ### 📋 Core Principles
@@ -90,6 +101,14 @@ gh auth login
 
 ### 🔀 Pull Request Workflow
 
+```mermaid
+graph TD
+    A[Push branch] --> B[Create PR]
+    B --> C[Review & Approve]
+    C --> D[Squash & Merge]
+    D --> E[Delete branch]
+```
+
 #### Create PR
 ```bash
 # Create PR from current branch
@@ -173,6 +192,21 @@ git commit -m "refactor: simplify error handling logic"
 ## 🌟 Branch Naming Conventions
 
 ### Patterns
+```mermaid
+graph TD
+    main((main))
+    feature1((feature/feature-name))
+    fix1((fix/bug-description))
+    docs1((docs/update-docs))
+    refactor1((refactor/refactor-desc))
+    test1((test/test-desc))
+    main --> feature1
+    main --> fix1
+    main --> docs1
+    main --> refactor1
+    main --> test1
+```
+
 ```bash
 feature/description-of-feature
 fix/description-of-fix
