@@ -27,6 +27,7 @@ For detailed setup and usage instructions, see:
 - [Using QuantaLogic PyZerox to Analyze PDFs and Images](docs/using-quantalogic-pyzerox.md)
 - [InvoicePipe Specification](docs/spec-invoice.md)
 - [Setting Up a FastAPI Project with Modern Python Tooling](docs/setup-fastapi-project.md)
+- [Managing Environment Variables and Configuration](docs/managing-env-files.md)
 
 ---
 

@@ -119,5 +119,6 @@ See the [official documentation](https://github.com/quantalogic/quantalogic-pyze
 - [InvoicePipe Project Overview](../README.md)
 - [InvoicePipe Specification](spec-invoice.md)
 - [Setting Up a FastAPI Project with Modern Python Tooling](setup-fastapi-project.md)
+- [Managing Environment Variables and Configuration](managing-env-files.md)
 
 For more details, see the [QuantaLogic PyZerox documentation](https://github.com/quantalogic/quantalogic-pyzerox).

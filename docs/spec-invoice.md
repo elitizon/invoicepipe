@@ -771,5 +771,6 @@ The project follows modern Python best practices with UV for dependency manageme
 - [InvoicePipe Project Overview](../README.md)
 - [Using QuantaLogic PyZerox to Analyze PDFs and Images](using-quantalogic-pyzerox.md)
 - [Setting Up a FastAPI Project with Modern Python Tooling](setup-fastapi-project.md)
+- [Managing Environment Variables and Configuration](managing-env-files.md)
 
 *This specification document serves as the foundation for the InvoicePipe project development. It should be updated as the project evolves and new requirements emerge.*

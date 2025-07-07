@@ -724,6 +724,7 @@ docker run -p 8000:8000 my-fastapi-project
 - [InvoicePipe Project Overview](../README.md) - Main project documentation
 - [InvoicePipe Specification](spec-invoice.md) - Detailed technical specification
 - [Using QuantaLogic PyZerox](using-quantalogic-pyzerox.md) - Document processing guide
+- [Managing Environment Variables and Configuration](managing-env-files.md) - Environment setup guide
 
 ## 13. Conclusion
 
