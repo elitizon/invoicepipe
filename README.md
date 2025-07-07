@@ -14,27 +14,32 @@ Key features:
 - Batch processing of documents
 - Customizable extraction prompts and options
 
-## HOW
+## 🚀 Quick Start Guide
 
-1. **Install dependencies**
-   - Python 3.8+
-   - System tools for PDF/image processing (see documentation)
-   - Install Python requirements: `pip install py-zerox`
-2. **Configure your API key** for a supported vision model (e.g., OpenAI, Gemini, Claude)
-3. **Run the extraction script** on your invoice files (see usage examples in the documentation)
+### 👋 New to InvoicePipe? Start Here!
 
-For detailed setup and usage instructions, see:
-- [Using QuantaLogic PyZerox to Analyze PDFs and Images](docs/using-quantalogic-pyzerox.md)
-- [InvoicePipe Specification](docs/spec-invoice.md)
-- [Setting Up a FastAPI Project with Modern Python Tooling](docs/setup-fastapi-project.md)
-- [Managing Environment Variables and Configuration](docs/managing-env-files.md)
-- [Instructor Library Integration Guide](docs/instructor-integration-guide.md) - Advanced structured data extraction
-- [LiteLLM Integration Guide](docs/litellm-integration-guide.md) - Universal LLM gateway and cost management
+**Complete Beginner?** 
+- 📚 **[Step-by-Step Assignment: Building a Simple Invoice CLI Tool](docs/preparation-work/step-by-step-assignment.md)** - Perfect for learning the basics
 
-## Getting Started with Development
+**Ready to Build?** Choose your path:
 
-If you're new to this project or want to build a simple CLI tool first, check out:
-- [Step-by-Step Assignment: Building a Simple Invoice CLI Tool](docs/preparation-work/step-by-step-assignment.md)
+#### 🔧 Option 1: Simple CLI Tool (Recommended)
+1. 📖 **[Using QuantaLogic PyZerox to Analyze PDFs and Images](docs/using-quantalogic-pyzerox.md)** - Core functionality
+2. ⚙️ **[Managing Environment Variables and Configuration](docs/managing-env-files.md)** - Essential setup
+
+#### 🚀 Option 2: Full FastAPI Application
+1. 🏗️ **[Setting Up a FastAPI Project with Modern Python Tooling](docs/setup-fastapi-project.md)** - Project structure
+2. 📋 **[InvoicePipe Specification](docs/spec-invoice.md)** - Requirements and API design
+3. ⚙️ **[Managing Environment Variables and Configuration](docs/managing-env-files.md)** - Configuration setup
+
+### 🧠 Advanced Features (Optional)
+- 🎯 **[Instructor Library Integration Guide](docs/instructor-integration-guide.md)** - Structured data extraction
+- 🌐 **[LiteLLM Integration Guide](docs/litellm-integration-guide.md)** - Universal LLM gateway and cost management
+
+### 📋 Prerequisites
+- Python 3.11
+- API key for a supported vision model (OpenAI, Gemini, Claude, etc.)
+- System tools for PDF/image processing (detailed in setup guides)
 
 ---
 
