@@ -14,6 +14,31 @@ Key features:
 - Batch processing of documents
 - Customizable extraction prompts and options
 
+## 🗂️ Directory Structure
+
+```
+invoicepipe/
+├── .git/                       # Git repository data
+├── .gitignore                  # Git ignore rules
+├── .venv/                      # Python virtual environment (optional)
+├── .vscode/                    # VS Code settings
+├── README.md                   # Project overview and instructions
+├── docs/                       # Documentation, guides, cheat sheets
+│   ├── git-github-cheat-sheet.md
+│   ├── instructor-integration-guide.md
+│   ├── litellm-integration-guide.md
+│   ├── managing-env-files.md
+│   ├── setup-fastapi-project.md
+│   ├── spec-invoice.md
+│   ├── using-quantalogic-pyzerox.md
+│   └── preparation-work/
+│       └── step-by-step-assignment.md
+├── projects/                   # Project modules and experiments
+│   └── invoicepipes/           # (empty or main project code)
+├── invoicepipe.code-workspace  # VS Code workspace config
+└── ...                         # Other files and folders
+```
+
 ## 🚀 Quick Start Guide
 
 ### 👋 New to InvoicePipe? Start Here!
