@@ -15,7 +15,7 @@ requires-python = ">=3.11"
 dependencies = [
     "click>=8.1.0",
     "python-dotenv>=1.0.0",
-    "quantalogic-pyzerox>=0.1.0",
+    "quantalogic-py-zerox<=0.0.8",
     "pydantic>=2.5.0",
 ]
 
