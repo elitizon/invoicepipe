@@ -772,6 +772,7 @@ The project follows modern Python best practices with UV for dependency manageme
 - [Using QuantaLogic PyZerox to Analyze PDFs and Images](using-quantalogic-pyzerox.md)
 - [Setting Up a FastAPI Project with Modern Python Tooling](setup-fastapi-project.md)
 - [Managing Environment Variables and Configuration](managing-env-files.md)
+- [Instructor Library Integration Guide](instructor-integration-guide.md) - Advanced structured data extraction patterns
 
 ## Learning Path
 

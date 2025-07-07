@@ -936,6 +936,7 @@ services:
 - [InvoicePipe Specification](spec-invoice.md)
 - [Setting Up a FastAPI Project](setup-fastapi-project.md)
 - [Using QuantaLogic PyZerox](using-quantalogic-pyzerox.md)
+- [Instructor Library Integration Guide](instructor-integration-guide.md) - Advanced structured data extraction patterns
 
 ## Learning Path
 

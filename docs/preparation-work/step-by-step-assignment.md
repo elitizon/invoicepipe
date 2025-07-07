@@ -995,48 +995,186 @@ Once you have the basic tool working, consider these enhancements:
 7. **Add invoice template recognition**
 8. **Implement caching for processed files**
 
-## Deliverables
+## Advanced Enhancement: Instructor Library Integration
 
-Your completed assignment should include:
+### Overview
+For students who want to explore advanced AI development patterns, we recommend integrating the [Instructor library](https://python.useinstructor.com/) to enhance the invoice processing pipeline. This optional enhancement teaches industry-standard structured data extraction patterns.
 
-1. **Working CLI tool** that processes invoice files
-2. **Complete project structure** with proper packaging
-3. **Configuration management** using environment variables
-4. **Error handling** and validation
-5. **Tests** covering main functionality
-6. **Documentation** with usage examples
-7. **Example invoice files** for testing
+### Why Use Instructor?
+- **Structured Data Extraction**: Define precise Pydantic models for invoice data
+- **Automatic Validation**: Built-in retry logic when validation fails
+- **Multi-Provider Support**: Works with OpenAI, Anthropic, Google, and 15+ LLM providers
+- **Production-Ready**: Streaming, caching, and comprehensive error handling
 
-## Evaluation Criteria
+### Integration Steps
 
-- **Functionality**: Does the tool work as specified?
-- **Code Quality**: Is the code well-structured and readable?
-- **Error Handling**: Are errors handled gracefully?
-- **Documentation**: Is the project well-documented?
-- **Testing**: Are key functions tested?
-- **Configuration**: Is configuration properly managed?
+#### 1. Install Instructor
+```bash
+# Add to pyproject.toml dependencies
+instructor>=1.0.0
 
-## Submission
+# Or install directly
+pip install instructor
+```
 
-1. Create a Git repository with your code
-2. Include a README with setup and usage instructions
-3. Provide example input and output files
-4. Include a brief reflection on challenges and solutions
+#### 2. Enhanced Data Models
+Replace basic data models with Instructor-optimized versions:
 
-## Resources
+```python
+# src/invoice_extractor/models.py
+import instructor
+from pydantic import BaseModel, Field, validator
+from typing import List, Optional
+from datetime import date
+from decimal import Decimal
 
-- [Click Documentation](https://click.palletsprojects.com/)
-- [Pydantic Documentation](https://docs.pydantic.dev/)
-- [QuantaLogic PyZerox](https://github.com/quantalogic/quantalogic-pyzerox)
-- [Python Environment Variables](https://docs.python.org/3/library/os.html#os.environ)
+class InvoiceItem(BaseModel):
+    """Enhanced invoice item with validation."""
+    description: str = Field(..., description="Item description")
+    quantity: Decimal = Field(..., gt=0, description="Quantity (must be positive)")
+    unit_price: Decimal = Field(..., ge=0, description="Unit price")
+    total: Decimal = Field(..., ge=0, description="Line total")
+    
+    @validator('total')
+    def validate_total(cls, v, values):
+        """Validate that total = quantity * unit_price."""
+        if 'quantity' in values and 'unit_price' in values:
+            expected_total = values['quantity'] * values['unit_price']
+            if abs(v - expected_total) > 0.01:
+                raise ValueError(f"Total {v} doesn't match quantity × unit_price ({expected_total})")
+        return v
 
-## Support
+class EnhancedInvoiceData(BaseModel):
+    """Enhanced invoice data with automatic validation."""
+    invoice_number: str = Field(..., description="Invoice number")
+    date: date = Field(..., description="Invoice date")
+    vendor_name: str = Field(..., description="Vendor/supplier name")
+    customer_name: str = Field(..., description="Customer name")
+    items: List[InvoiceItem] = Field(..., min_items=1, description="Invoice line items")
+    subtotal: Decimal = Field(..., ge=0, description="Subtotal amount")
+    tax: Decimal = Field(..., ge=0, description="Tax amount")
+    total: Decimal = Field(..., ge=0, description="Total amount")
+    currency: str = Field(default="USD", description="Currency code")
+    
+    @validator('total')
+    def validate_total_amount(cls, v, values):
+        """Validate that total = subtotal + tax."""
+        if 'subtotal' in values and 'tax' in values:
+            expected_total = values['subtotal'] + values['tax']
+            if abs(v - expected_total) > 0.01:
+                raise ValueError(f"Total {v} doesn't match subtotal + tax ({expected_total})")
+        return v
+```
 
-If you encounter issues:
-1. Check the error messages carefully
-2. Verify your API key is correctly set
-3. Test with different file formats
-4. Review the logs for debugging information
-5. Consult the documentation for dependencies
+#### 3. Enhanced Processor
+Create an Instructor-powered processor:
 
-Good luck with your implementation! 🚀
+```python
+# src/invoice_extractor/instructor_processor.py
+import instructor
+from openai import OpenAI
+from .models import EnhancedInvoiceData
+
+class InstructorInvoiceProcessor:
+    """Invoice processor using Instructor library."""
+    
+    def __init__(self, api_key: str, model: str = "gpt-4o"):
+        self.client = instructor.from_openai(OpenAI(api_key=api_key))
+        self.model = model
+    
+    def extract_invoice_data(self, text_content: str) -> EnhancedInvoiceData:
+        """Extract structured invoice data with automatic validation."""
+        try:
+            return self.client.chat.completions.create(
+                model=self.model,
+                response_model=EnhancedInvoiceData,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": """You are an expert invoice data extractor. 
+                        Extract all relevant information from the provided invoice text.
+                        Be precise with numbers and dates."""
+                    },
+                    {
+                        "role": "user",
+                        "content": f"Extract structured data from this invoice:\n\n{text_content}"
+                    }
+                ],
+                max_retries=3,  # Automatic retry on validation failure
+            )
+        except Exception as e:
+            raise ValueError(f"Failed to extract invoice data: {str(e)}")
+    
+    def extract_with_streaming(self, text_content: str):
+        """Extract with streaming for real-time updates."""
+        for partial_invoice in self.client.chat.completions.create_partial(
+            model=self.model,
+            response_model=EnhancedInvoiceData,
+            messages=[
+                {"role": "user", "content": f"Extract invoice data: {text_content}"}
+            ]
+        ):
+            yield partial_invoice
+```
+
+#### 4. Enhanced CLI Options
+Add advanced CLI options:
+
+```python
+@click.option('--use-instructor', is_flag=True, help='Use Instructor library for enhanced extraction')
+@click.option('--stream', is_flag=True, help='Enable streaming output')
+@click.option('--provider', default='openai', help='LLM provider (openai, anthropic, google)')
+def extract_invoice(invoice_file, output, use_instructor, stream, provider):
+    """Enhanced CLI with Instructor support."""
+    if use_instructor:
+        processor = InstructorInvoiceProcessor()
+        if stream:
+            click.echo("Processing with streaming...")
+            for partial_data in processor.extract_with_streaming(text_content):
+                click.echo(f"Processing: {partial_data.invoice_number or 'Working...'}")
+        else:
+            result = processor.extract_invoice_data(text_content)
+    else:
+        # Use original processor
+        processor = InvoiceProcessor()
+        result = processor.process_invoice(invoice_file)
+```
+
+### Benefits of Using Instructor
+
+1. **Automatic Validation**: Ensures data quality without manual validation code
+2. **Retry Logic**: Automatically retries failed extractions with improved prompts
+3. **Type Safety**: Full IDE support with autocomplete and type checking
+4. **Multi-Provider**: Easy to switch between OpenAI, Anthropic, Google, etc.
+5. **Streaming Support**: Real-time processing for better user experience
+6. **Production Patterns**: Learn industry-standard AI development practices
+
+### Advanced Challenges
+
+For students using Instructor, try these additional challenges:
+
+1. **Custom Validators**: Add business logic validation using Pydantic validators
+2. **Multi-Provider Support**: Implement support for different LLM providers
+3. **Batch Processing**: Process multiple invoices efficiently
+4. **Error Recovery**: Implement fallback strategies for failed extractions
+5. **Performance Optimization**: Add caching and response optimization
+
+### Learning Resources
+
+- [Instructor Documentation](https://python.useinstructor.com/) - Complete guide and examples
+- [Instructor Integration Guide](../instructor-integration-guide.md) - Detailed implementation guide
+- [Receipt Processing Example](https://python.useinstructor.com/examples/extracting_receipts/) - Similar use case
+- [Pydantic Validation](https://docs.pydantic.dev/latest/concepts/validators/) - Advanced validation patterns
+
+### When to Use Instructor
+
+Consider using Instructor when:
+- Building production-ready AI applications
+- Need reliable structured data extraction
+- Want automatic validation and retry logic
+- Working with multiple LLM providers
+- Require real-time streaming capabilities
+
+This enhancement transforms the assignment from a basic text processing exercise into a comprehensive, production-ready AI application that teaches modern development patterns.
+
+---
