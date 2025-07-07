@@ -660,6 +660,7 @@ The library's automatic validation, retry logic, and multi-provider support make
 - [QuantaLogic PyZerox Usage](./using-quantalogic-pyzerox.md) - OCR and document processing
 - [FastAPI Setup Guide](./setup-fastapi-project.md) - Building the API layer
 - [Environment Management](./managing-env-files.md) - Configuration and deployment
+- [LiteLLM Integration Guide](./litellm-integration-guide.md) - Universal LLM gateway and cost management
 - [Project README](../README.md) - Overview and getting started
 
 ## External Resources

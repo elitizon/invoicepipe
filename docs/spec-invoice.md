@@ -773,6 +773,7 @@ The project follows modern Python best practices with UV for dependency manageme
 - [Setting Up a FastAPI Project with Modern Python Tooling](setup-fastapi-project.md)
 - [Managing Environment Variables and Configuration](managing-env-files.md)
 - [Instructor Library Integration Guide](instructor-integration-guide.md) - Advanced structured data extraction patterns
+- [LiteLLM Integration Guide](litellm-integration-guide.md) - Universal LLM gateway and cost management
 
 ## Learning Path
 
