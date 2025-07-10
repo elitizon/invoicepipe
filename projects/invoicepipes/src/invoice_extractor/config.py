@@ -2,7 +2,8 @@
 
 import os
 from typing import Optional
-from pydantic import BaseSettings, Field
+from pydantic_settings import BaseSettings
+from pydantic import Field
 
 class Settings(BaseSettings):
     """Application settings."""
@@ -40,6 +41,7 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         case_sensitive = True
+        extra = "allow"
 
 # Global settings instance
 settings = Settings()
